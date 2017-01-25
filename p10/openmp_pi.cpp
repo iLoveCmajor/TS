@@ -5,13 +5,10 @@
 
 #define PI 3.1415926538837211
 
-
-/* Main Program */
-
 main()
 {
-	int             Noofintervals, i;
-	float           sum, x, totalsum, h, partialsum, sumthread;
+	int Noofintervals, i;
+	float sum, x, totalsum, h, partialsum, sumthread;
 
 	printf("Enter number of intervals\n");
 	scanf("%d", &Noofintervals);
