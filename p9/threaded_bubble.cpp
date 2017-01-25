@@ -2,14 +2,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <omp.h>
 
 using namespace std;
 
 int main(){
 
 srand((unsigned)time(0));
-int N = 1000;
+int N = 100;
 int Arr[N];
 
 for(int i = 0; i < N; i++)
@@ -21,7 +20,7 @@ const clock_t begin_time = clock();
 for( int i = 0; i < N; i++ )
 {
     int first = i % 2;
-#pragma omp parallel for default(none),shared(Arr,first)
+#pragma omp parallel for default(none),shared(A,first)
     for( int j = first; j < N-1; j += 2 )
     {
             if( Arr[ j ] > Arr[ j+1 ] )
