@@ -5,13 +5,13 @@
 #include <memory>
 #include <cstring>
 
-enum class AllocErrorType 
+enum class AllocErrorType
 {
     InvalidFree,
     NoMemory,
 };
 
-class AllocError: std::runtime_error 
+class AllocError: std::runtime_error
 {
     AllocErrorType type;
 
@@ -26,7 +26,7 @@ public:
 
 class Allocator;
 
-class Pointer 
+class Pointer
 {
     std::shared_ptr<void *> ptr;
     std::shared_ptr<size_t> size;
@@ -59,10 +59,9 @@ public:
     void realloc(Pointer &, size_t);
     void free(Pointer &);
 
-    //void defrag();
+    void defrag();
 
     std::string dump();
 
     ~Allocator();
 };
-

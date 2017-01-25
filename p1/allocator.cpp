@@ -109,7 +109,25 @@ void Allocator::realloc(Pointer &p, size_t N)
 
 void Allocator::defrag()
 {
-    
+    sort(ptrs.begin(), ptrs.end(), [](Pointer *p1, Pointer *p2) -> bool
+    {
+        return p1->get() < p1->get();
+    });
+
+    char *dst = (char *)base_ptr;
+    int whole_length = 0;
+    for (int i = 0; i < ptrs.size(); ++i)
+    {
+        int curr_size = ptrs[i]->getSize();
+        memmove(dst, ptrs[i]->get(), curr_size);
+        ptrs[i]->setPtr(dst);
+        whole_length += curr_size;
+        dst += curr_size;
+    }
+    for (int i = 0; i < whole_length; ++i)
+        in_use[i] = true;
+    for (int i = whole_length; i < size; ++i)
+        in_use[i] = false;
 }
 
 void Allocator::free(Pointer &p)
