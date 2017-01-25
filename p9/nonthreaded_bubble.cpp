@@ -31,6 +31,7 @@ for( int i = 0; i < N; i++ )
         if( stop )
                 break;
 }
+
 cout << float( clock () - begin_time ) /  CLOCKS_PER_SEC;
 //for(int i = 0; i < N; ++i)  cout<<Arr[i]<<" ";
 }
